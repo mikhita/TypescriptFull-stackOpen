@@ -1,4 +1,4 @@
-const calculateBmi = (heightCm: number, weightKg: number, printText: string): string => {
+export const calculateBmi = (heightCm: number, weightKg: number ): string => {
   const heightM: number = heightCm / 100;
   const bmi: number = weightKg / (heightM * heightM);
 
@@ -22,12 +22,13 @@ const calculateBmi = (heightCm: number, weightKg: number, printText: string): st
   return `BMI: ${bmi.toFixed(2)}, ${message}`;
 };
 
-const heightCm: number = Number(process.argv[2]);
-const weightKg: number = Number(process.argv[3]);
-const printText: string = 'Result is:';
+// const heightCm: number = Number(process.argv[2]);
+// const weightKg: number = Number(process.argv[3]);
 
-try {
-  console.log(calculateBmi(heightCm, weightKg, printText));
-} catch (error: any) {
-  console.error('Error:', error.message);
-}
+// try {
+//   console.log(calculateBmi(heightCm, weightKg));
+// } catch (error: any) {
+//   console.error('Error:', error.message);
+// }
+
+ 
