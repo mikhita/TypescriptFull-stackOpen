@@ -28,6 +28,6 @@ const printText: string = 'Result is:';
 
 try {
   console.log(calculateBmi(heightCm, weightKg, printText));
-} catch (error) {
+} catch (error: any) {
   console.error('Error:', error.message);
 }
