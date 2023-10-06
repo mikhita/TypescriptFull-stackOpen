@@ -30,10 +30,19 @@ const calculateExercises = (hoursPerDay: number[], target: number): ExerciseResu
   };
 };
 
-// Call the function with example data
-const exampleHoursPerDay = [3, 0, 2, 4.5, 0, 3, 1];
-const target = 2;
+const args = process.argv.slice(2); 
+const hoursPerDay = args.map(arg => parseFloat(arg)).filter(arg => !isNaN(arg));
 
-console.log(calculateExercises(exampleHoursPerDay, target));
+if (hoursPerDay.length === 0) {
+  console.log('Please provide valid exercise hours as command-line arguments.');
+  process.exit(1);
+}
+
+const target = parseFloat(args[args.length - 1]);
+
+
+const exerciseResult: ExerciseResult = calculateExercises(hoursPerDay, target);
+
+console.log(exerciseResult);
 
 
