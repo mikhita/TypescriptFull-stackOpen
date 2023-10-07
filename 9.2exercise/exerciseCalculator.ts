@@ -8,10 +8,10 @@ interface ExerciseResult {
   average: number;
 }
 
-export const calculateExercises = (hoursPerDay: number[], target: number): ExerciseResult => {
-  const periodLength = hoursPerDay.length;
-  const trainingDays = hoursPerDay.filter(hours => hours > 0).length;
-  const totalHours = hoursPerDay.reduce((sum, hours) => sum + hours, 0);
+export const calculateExercises = (daily_exercises: number[], target: number): ExerciseResult => {
+  const periodLength = daily_exercises.length;
+  const trainingDays = daily_exercises.filter(hours => hours > 0).length;
+  const totalHours = daily_exercises.reduce((sum, hours) => sum + hours, 0);
   const average = totalHours / periodLength;
 
   const targetReached = average >= target;
@@ -31,9 +31,9 @@ export const calculateExercises = (hoursPerDay: number[], target: number): Exerc
 };
 
 const args = process.argv.slice(2); 
-const hoursPerDay = args.map(arg => parseFloat(arg)).filter(arg => !isNaN(arg));
+const daily_exercises = args.map(arg => parseFloat(arg)).filter(arg => !isNaN(arg));
 
-if (hoursPerDay.length === 0) {
+if (daily_exercises.length === 0) {
   console.log('Please provide valid exercise hours as command-line arguments.');
   process.exit(1);
 }
@@ -41,7 +41,7 @@ if (hoursPerDay.length === 0) {
 const target = parseFloat(args[args.length - 1]);
 
 
-const exerciseResult: ExerciseResult = calculateExercises(hoursPerDay, target);
+const exerciseResult: ExerciseResult = calculateExercises(daily_exercises, target);
 
 console.log(exerciseResult);
 

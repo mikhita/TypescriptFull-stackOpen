@@ -25,15 +25,14 @@ app.get('/bmi', (_req, res) => {
 });
 
 app.post('/exercises', (req, res) => {
-  const { hoursPerDay, target } = req.body;
+  const { daily_exercises, target } = req.body;
 
-  if ( !hoursPerDay || isNaN(Number(hoursPerDay)) || !target || isNaN(Number(target)) ) {
-    return res.status(400).send({ error: 'parameters missing'});
+  if (!daily_exercises || !Array.isArray(daily_exercises) || isNaN(target)) {
+    return res.status(400).json({ error: 'malformatted parameters' });
   }
 
-
-  const result = calculateExercises(hoursPerDay, target);
-  return res.send({ result });
+  const result = calculateExercises(daily_exercises, target);
+  return res.json(result);
 });
 
 const PORT = 3002;
