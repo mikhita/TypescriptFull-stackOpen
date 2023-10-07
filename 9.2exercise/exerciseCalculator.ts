@@ -8,7 +8,7 @@ interface ExerciseResult {
   average: number;
 }
 
-const calculateExercises = (hoursPerDay: number[], target: number): ExerciseResult => {
+export const calculateExercises = (hoursPerDay: number[], target: number): ExerciseResult => {
   const periodLength = hoursPerDay.length;
   const trainingDays = hoursPerDay.filter(hours => hours > 0).length;
   const totalHours = hoursPerDay.reduce((sum, hours) => sum + hours, 0);
